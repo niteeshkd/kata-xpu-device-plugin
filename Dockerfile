@@ -56,4 +56,4 @@ LABEL name="KataContainers GPU Device Plugin"
 COPY --from=builder /go/src/kata-xpu-device-plugin/kata-xpu-device-plugin /usr/bin/
 COPY --from=builder /go/src/kata-xpu-device-plugin/utils/pci.ids /usr/pci.ids
 
-CMD ["kata-xpu-device-plugin"]
+CMD ["kata-xpu-device-plugin", "--device-list-strategy", "cdi-cri"]

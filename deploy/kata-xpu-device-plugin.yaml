@@ -58,8 +58,8 @@ spec:
       containers:
       - name: kata-xpu-dp-ctr
         image: <Repo>/kata-xpu-device-plugin:v1.3.25
-        args:
-          - --device-list-strategy=$(DEVICE_LIST_STRATEGY)
+#        args:
+#          - --device-list-strategy=$(DEVICE_LIST_STRATEGY)
         env:
           - name: DEVICE_LIST_STRATEGY
             value: "cdi-cri"
