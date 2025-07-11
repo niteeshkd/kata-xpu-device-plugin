@@ -28,16 +28,15 @@ ARG CUDA_IMAGE=cuda
 ARG CUDA_VERSION=12.5.1
 ARG BASE_DIST=ubi8
 
+FROM registry.access.redhat.com/${BASE_DIST}/ubi:latest AS builder
+
 RUN yum install -y wget make gcc systemd-devel
 
-RUN yum install -y wget make gcc
-
 ARG GOLANG_VERSION=1.22.5
-RUN wget -nv -O - https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz |
-    tar -C /usr/local -xz
+RUN wget -nv -O - https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz
 
-ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+ENV GOPATH=/go
+ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 ENV GOOS=linux GOARCH=amd64
 
